@@ -18,7 +18,7 @@ This deep network is better than other alternative deep learning networks in app
 
 <p align="center">
 <img width="650" height="200" alt="d1" src="https://user-images.githubusercontent.com/71558720/99200627-676fc580-2774-11eb-9e89-5092efc722a8.png">
-</p> <br /> 
+</p>
 <p align="center">
 <em>Fig.1: The YOLO Detection System.Processing images with YOLO is simple and straightforward. The system (1) resizes the input image to 448×448, (2) runs a single convolutional network on the image, and (3) thresholds the resulting detections by the model’sconfidence</em>
 </p> <br /> 
