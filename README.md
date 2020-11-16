@@ -69,7 +69,7 @@ For knowing how many anchor boxes should be used, asolution is to use the plot o
 </p> <br /> 
 
 
-Here, we want to explore the effect of 4 amd 8 anchor boxes parameters on the final result. In this case the clusters are shown in Figure 4.
+Here, we want to explore the effect of 4 amd 8 anchor boxes parameters on the final result. In this case the clusters are shown in (Figure 4).
 
 <p align="center">
   <img width="350" height="290" hspace="20" alt="k4" src="https://user-images.githubusercontent.com/71558720/99200620-650d6b80-2774-11eb-8a62-df51e991704d.png"> <em>K=4</em>
@@ -103,7 +103,7 @@ Here, we want to explore the effect of 4 amd 8 anchor boxes parameters on the fi
  
   
 #### 3) Input/Output Encoding: 
-Data set contains many imageswith different sizes. Input/output encoding is necessary to reshape any image to the pre-specifed shape. The input encodingessentially only requires to readin and resize the image to thepre-specified shape. The output’s xmin, ymin, xmax and ymax also need to be resized and assign each object to a groundtruth anchor box. Also, the bounding boxes encoding for out-put is done by defining (centerx,centery,centerw,centerh) formats as shown in Figure 5. <br />
+Data set contains many imageswith different sizes. Input/output encoding is necessary to reshape any image to the pre-specifed shape. The input encodingessentially only requires to readin and resize the image to thepre-specified shape. The output’s xmin, ymin, xmax and ymax also need to be resized and assign each object to a groundtruth anchor box. Also, the bounding boxes encoding for out-put is done by defining (centerx,centery,centerw,centerh) formats as shown in (Figure 5). <br />
 
 Centerx=1/2(xmin+xmax)
 Centery=1/2(ymin+ymax)
@@ -171,7 +171,7 @@ In the analysis, the PASCAL VOC 2012 data set have beenused. The data set size i
 
 ## Result and Analysis:
 
-At first, the effect of increasing the anchor boxes is illustrated in Figure-6. It is clear that increasing the number of anchor boxes increases the accuracy by decreasing the loss function for similar epochs.
+At first, the effect of increasing the anchor boxes is illustrated in (Figure-6). It is clear that increasing the number of anchor boxes increases the accuracy by decreasing the loss function for similar epochs.
 
 <p align="center">
 <img width="700" height="350" alt="plott" src="https://user-images.githubusercontent.com/71558720/99200625-66d72f00-2774-11eb-89cb-7bbaf04a36c6.PNG">
@@ -181,7 +181,7 @@ At first, the effect of increasing the anchor boxes is illustrated in Figure-6. 
 </p> <br />
 
 
-We are also interested to see the weight of each loss components in detection accuracy. This is another scientifictest performed through changing the loss functions weight. To  do that, weights for bounding box parameters loss and confidence loss are doubled. After changing weights (TableIV), the network is trained for 50 epochs and the comparison results are shown in Figure-7. The comparison shows that increasing loss components weights does not increase the accuracy although it was expected to get better results  sinceloss function on the detection part has more sensitivity on the localization errors. 
+We are also interested to see the weight of each loss components in detection accuracy. This is another scientifictest performed through changing the loss functions weight. To  do that, weights for bounding box parameters loss and confidence loss are doubled. After changing weights (TableIV), the network is trained for 50 epochs and the comparison results are shown in (Figure-7). The comparison shows that increasing loss components weights does not increase the accuracy although it was expected to get better results  sinceloss function on the detection part has more sensitivity on the localization errors. 
 
 
 <p align="center">
@@ -201,7 +201,7 @@ We are also interested to see the weight of each loss components in detection ac
 <em>TABLE IV: Loss weight values for both runs</em> <br /><br />
 
 
-Finally, the effects of optimizer methods on the training results are explored. In the original work, the network wastrained with Initial Adam optimizer. Table V shows the optimizer tested methods with corresponding values and Figure 8 illustrates that using Nadam provides the best performance by reducing the cost in shorter time.
+Finally, the effects of optimizer methods on the training results are explored. In the original work, the network wastrained with Initial Adam optimizer. Table V shows the optimizer tested methods with corresponding values and (Figure 8) illustrates that using Nadam provides the best performance by reducing the cost in shorter time.
 <br />
 
 
