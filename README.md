@@ -49,19 +49,19 @@ Following  YOLO, the objectness prediction still predicts the IoU of the ground 
 
 
 ## Special improvements in YOLOv2:
-#### 1) Dimension  clusters: 
+#### 1) Dimension clusters: 
 With YOLO the box dimensions are handpicked YOLOv2 uses k-means clustering to conduct clusteringanalysis on the size of the object bounding boxes. <br />
-#### 2) Intersection  of  Union  (IoU): 
+#### 2) Intersection of Union (IoU): 
 This is calculated by dividing the overlapped area of a predicted box and the truth box by the whole area made. <br /> 
 
 For knowing how many anchor boxes should be used, asolution is to use the plot of mean IoU vs K clusters. This shows the true number of clusters captured when the increase in  the mean IoU slope is ”substantially” large (see Figure 3).
 
 <p align="center">
-<img width="350" height="200" alt="11" src="https://user-images.githubusercontent.com/71558720/99202903-c4707900-277e-11eb-8521-1b3656a86f0e.PNG">
+<img width="300" height="140" alt="11" src="https://user-images.githubusercontent.com/71558720/99202903-c4707900-277e-11eb-8521-1b3656a86f0e.PNG">
 </p> <br /> 
 
 <p align="center">
-<img width="500" height="400" alt="dd" src="https://user-images.githubusercontent.com/71558720/99200628-68085c00-2774-11eb-965b-f87aa4dcb94e.png">
+<img width="650" height="400" alt="dd" src="https://user-images.githubusercontent.com/71558720/99200628-68085c00-2774-11eb-965b-f87aa4dcb94e.png">
 </p>
 <p align="center">
 <em>Fig.3: The clustered anchor box information.</em>
@@ -117,7 +117,34 @@ Centerh=  (ymax−ymin) <br />
 <em>Fig.5: Bounding box encoding.</em>
 </p> <br /> 
 
-#### 4)  Direct   Location   Prediction:
+#### 4) Direct Location Prediction:
+
+Using anchor boxes in YOLO causes a model instability, especially during early iteration. That mostly comes from predicting the (x,y) location forthe box. The network predicts 5 bounding boxes at each cell in the output feature map. The network predicts 5 coordinates for each bounding box, tx,ty,tw,th. If the cell is offset from the top left corner of the image by(cx,cy) and the bounding box prior has width and height pw,ph, then the predictions correspond to:
+
+<p align="center">
+<img width="300" height="140" alt="22" src="https://user-images.githubusercontent.com/71558720/99202901-c4707900-277e-11eb-9474-b4ba3343a0b3.PNG">
+</p> <br /> 
+
+
+#### 5) Fine-Grained Features:
+YOLOv2 predicts detection on a 13×13 feature map, which does a sufficient job at detecting large objects, but it comes short when detecting small-scaleobjects as we get deeper  in the network. That being said, using higher-resolution feature maps helps the network detect objects of different scales, so YOLOv2 adapts this approach, but instead of stacking a layer of high-resolution on top of the convolution layers, the features of a 26×26 resolution layer are concatenated  with the low resolution features along  thechannels, making the 26×26×512 feature map a 13×13×2048 feature map, similar to identity mappings in ResNet. <br /> 
+
+
+
+#### 6) Multi-Scale Training:
+
+Since the network consists only of convolutional and pooling layers, not fully connected layers, it can be trained on different input sizes, thus detecting well on different  resolutions. Therefore, during training for every 10 batches, the network randomly chooses a new image size, since the model downsamples by a factor of 32, the chosen sizes should be a multiple of 32. <br /> <br /> 
+
+
+## Loss Function
+The loss function of YOLOv2 is quite complex. In this version the fully connected layers is removed from YOLO(v1) and use anchor boxes to predict bounding boxes. Overall Loss is the summation of Loss calculated for bounding boxes, classes and confidence. The loss corresponding to (grid cell,anchor box)pair =(i,j) is calculated as following equations: <br /> <br />
+
+<p align="left">
+<img width="400" height="900" alt="33" src="https://user-images.githubusercontent.com/71558720/99203647-29c56980-2781-11eb-8b89-2d6115c6ad27.PNG">
+</p> <br />
+
+
+
 
 
 
