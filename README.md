@@ -146,7 +146,7 @@ The loss function of YOLOv2 is quite complex. In this version the fully connecte
 
 
 ## Dataset
-In the analysis, the PASCAL VOC 2012 data set have beenused. The data set size is 2,0GB and is a well-known data setfor object detection, classification, segmentation of objects. There are around 10,000 images for training and validation containing bounding boxes with objects. It has been split into 50% for training/validation and 50% for  testing. The main goal of this challenge is to recognize objects from several visual object classes in realistic scenes. It is fundamentally asupervised learning  problem in  that a training set of labelled images is provided. The total number of objects is 40138 in 17125 images fitting in 20 classes. Object classes are definedas follows:
+In the analysis, the PASCAL VOC 2012 data set have beenused. The data set size is 2,0GB and is a well-known data setfor object detection, classification, segmentation of objects. The link of this data set you can find [here](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/) or [here](http://host.robots.ox.ac.uk/pascal/VOC/). There are around 10,000 images for training and validation containing bounding boxes with objects. It has been split into 50% for training/validation and 50% for  testing. The main goal of this challenge is to recognize objects from several visual object classes in realistic scenes. It is fundamentally asupervised learning  problem in  that a training set of labelled images is provided. The total number of objects is 40138 in 17125 images fitting in 20 classes. Object classes are definedas follows:
 <br />
 
 ```diff
