@@ -20,10 +20,15 @@ This deep network is better than other alternative deep learning networks in app
 <img width="650" height="200" alt="d1" src="https://user-images.githubusercontent.com/71558720/99200627-676fc580-2774-11eb-9e89-5092efc722a8.png">
 </p>
 <p align="center">
-<em>Fig.1: The YOLO Detection System.Processing images with YOLO is simple and straightforward. The system (1) resizes the input image to 448×448, (2) runs a single convolutional network on the image, and (3) thresholds the resulting detections by the model’sconfidence</em>
+<em>Fig.1: The YOLO Detection System. Processing images with YOLO is simple and straightforward. The system (1) resizes the input image to 448×448, (2) runs a single convolutional network on the image, and (3) thresholds the resulting detections by the model’sconfidence</em>
 </p> <br /> 
 
+#### Problem formulation:  
+The main scientific questions of thispaper are as follow: <br /> 
 
++ To explore how the loss value of the YOLO v2 changes byintroducing a new anchor box set in the design method.
++ Changing the training optimizer factor to improve the network performance.
++ To test the effect of different components of the loss function (by changing their weights) on the overall accuracyof the network. <br /> 
 
 
 
