@@ -20,7 +20,7 @@ This deep network is better than other alternative deep learning networks in app
 <img width="650" height="200" alt="d1" src="https://user-images.githubusercontent.com/71558720/99200627-676fc580-2774-11eb-9e89-5092efc722a8.png">
 </p>
 <p align="center">
-<em>Fig.1: The YOLO Detection System. Processing images with YOLO is simple and straightforward. The system (1) resizes the input image to 448×448, (2) runs a single convolutional network on the image, and (3) thresholds the resulting detections by the model’sconfidence</em>
+<em>Fig.1: The YOLO Detection System. Processing images with YOLO is simple and straightforward. The system (1) resizes the input image to 448×448, (2) runs a single convolutional network on the image, and (3) thresholds the resulting detections by the model’s confidence</em>
 </p> <br /> 
 
 #### Problem formulation:  
@@ -28,20 +28,23 @@ The main scientific questions of thispaper are as follow: <br />
 
 + To explore how the loss value of the YOLO v2 changes byintroducing a new anchor box set in the design method.
 + Changing the training optimizer factor to improve the network performance.
-+ To test the effect of different components of the loss function (by changing their weights) on the overall accuracyof the network. <br /> 
++ To test the effect of different components of the loss function (by changing their weights) on the overall accuracyof the network. <br /> <br /> 
+
+## General Method:
+The YOLO detection model has incomparable advantage inexecution speed. However, the detection accuracy is slightlyless than other approaches especially in the detection of smalltargets. To solve these problems, Redmonet.al. proposed anupgraded version of the YOLO detection model known as YOLOv2 detection model. This upgraded model not only ensures the absolute superiority of the YOLO detection model in detection speed but also greatly improves the detection accuracy of the model by introducing some optimization methods. Firstly, some of the techniques used in YOLOv2 detection models arebatch normalization, high resolution, fine-grained features classifier, convolutional with anchor boxes, dimension clusters, direct location prediction, multi-scale trainingand so on. Secondly, the structure of CNN network model which YOLO detection model relies on is adjusted. <br />
 
 
+## Network Architecture:
+The network model contains 22 convolution layers and 5 max-pooling layers. YOLO algorithm divides any given inputimage into a S×S grid system. Each grid on the input image is  responsible for detection on an object and each grid cell predicts B bounding boxes together (width, height, box center x and y) with their confidence score. Each confidence  scorereflects the probability of the predicted box containing anobject Pr(Object), as well as how accurate is the predicted box by evaluating its overlap with the ground truth bounding box measured by intersection over union IoU. A boundingbox describes the rectangle that encloses an object. YOLO alsooutputs a confidence score that tells us how certain it is that the predicted bounding box actually encloses some object. The architecture contains repeatedly, stacks Convolution + Batch Normalization + Leaky Relu + Maxpooling2D layers. <br /> 
 
+Following  YOLO, the objectness prediction still predicts the IoU of the ground truth and the proposed box and the class predictions predict the conditional probability of  that  classgiven that there is an object. Also in this architecture, the network is shrunk to operate on 416 input images instead of 448×448. The reason is an odd number of locations  in the feature map are needed so there is a single-center cell. YOLO’s convolutional layers downsample the image by a factor of 32 so by using an input image of 416 we get an output resolutionfeature map of 13×13. In our analysis, we take 8 anchorboxes, hence the output dimension of the last layer would be 13×13×200. <br /> 
 
-
-
-
-
-
-
-
-
-
+<p align="center">
+<img width="900" height="500" alt="net new" src="https://user-images.githubusercontent.com/71558720/99200623-663e9880-2774-11eb-9e64-6880c56e5114.PNG">
+</p>
+<p align="center">
+<em>Fig.2: YOLOv2 Architecture</em>
+</p> <br /> 
 
 
 
