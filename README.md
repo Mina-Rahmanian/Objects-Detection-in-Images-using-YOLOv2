@@ -48,6 +48,40 @@ Following  YOLO, the objectness prediction still predicts the IoU of the ground 
 
 
 
+## Special improvements in YOLOv2:
++ Dimension  clusters: With YOLO the box dimensions are handpicked YOLOv2 uses k-means clustering to conduct clusteringanalysis on the size of the object bounding boxes.
++ Intersection  of  Union  (IoU): This is calculated by dividing the overlapped area of a predicted box and the truth box by the whole area made. <br /> 
+
+For knowing how many anchor boxes should be used, asolution is to use the plot of mean IoU vs K clusters. This shows the true number of clusters captured when the increase in  the mean IoU slope is ”substantially” large (see Figure 3).
+
+
+<p align="center">
+<img width="500" height="400" alt="dd" src="https://user-images.githubusercontent.com/71558720/99200628-68085c00-2774-11eb-965b-f87aa4dcb94e.png">
+</p>
+<p align="center">
+<em>Fig.3: The clustered anchor box information.</em>
+</p> <br /> 
+
+
+
+
+Here, we want to explore the effect of 4 amd 8 anchor boxes parameters on the final result. In this case the clusters are shown in Figure 4.
+
+<p align="center">
+  <img width="350" height="250" hspace="20" alt="k4" src="https://user-images.githubusercontent.com/71558720/99200620-650d6b80-2774-11eb-8a62-df51e991704d.png"> <em>K=4</em>
+  <img width="350" height="290" hspace="20" alt="k8" src="https://user-images.githubusercontent.com/71558720/99200621-65a60200-2774-11eb-9c74-f18dbdc95e26.png"> <em>K=8</em>
+</p> <br /> 
+<p align="center">
+<em>Fig.4: Visualization of bounding boxes clusters for K=4, K=8.</em>
+</p> <br /> 
+
+
+
+
+
+
+
+
 
 
 
