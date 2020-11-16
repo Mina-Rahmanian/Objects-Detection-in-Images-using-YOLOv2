@@ -9,11 +9,12 @@ Useful of knowledge before start:
 
 ----------------------------------------------------------------------------------------------------
 <br />
-In  recent years, Object Detection is one of the fundamental challenges in the field of computer vision,image processing and pattern recognition, which provides aresearch foundation and a theoretical basis for a series ofautomatic analysis and understanding of image content suchas target tracking and behaviour analysis. Object detection has been a  challenging task for decadessince images of objects in the real world environment areaffected by illumination, rotation, scale, and occlusion. In recent years, a large improvement in imagerecognition was made by a series of CNN based solutions. This is a technology that mixes Artificial Neural Networks (ANN) and up to date deep learning strategies. CNN is designed to automatically and adaptively learn spatial hierarchies of features through backpropagation by using multiple building blocks, such as convolution layers,pooling layers, and fully connected layers. <br />
+The main goal of this challenge is to recognize objects from several visual object classes in realistic scenes. It is fundamentally asupervised learning  problem in  that a training set of labelled images is provided.
+In recent years, Object Detection is one of the fundamental challenges in the field of computer vision,image processing and pattern recognition, which provides aresearch foundation and a theoretical basis for a series ofautomatic analysis and understanding of image content suchas target tracking and behaviour analysis. Object detection has been a challenging task for decadessince images of objects in the real world environment areaffected by illumination, rotation, scale, and occlusion. In recent years, a large improvement in imagerecognition was made by a series of CNN based solutions. This is a technology that mixes Artificial Neural Networks (ANN) and up to date deep learning strategies. CNN is designed to automatically and adaptively learn spatial hierarchies of features through backpropagation by using multiple building blocks, such as convolution layers,pooling layers, and fully connected layers. <br />
 
-This project exhibits one of the best frame obstaclesdetection based on Convolutional Neural Networks (CNN) Meth-ods known as ”You Only Look Once” (YOLO)v2. This  methodefficiently classifies moving or stationary objects as well as bytype. In this perspective, two values of anchor boxes (fourand eight with different sizes) are selected for  comparing theloss. Also, the effects of loss weights and optimizer methods areexplored. This model is trained and tested based on the PASCALVOC2012 dataset. The comparing results  show that increasingthe anchor boxes and also selecting Nadam optimizer improvesthe training performance while changing the loss weights does not have a positive effect on the  accuracy. <br />
+This project exhibits one of the best frame obstaclesdetection based on Convolutional Neural Networks (CNN) Meth-ods known as ”You Only Look Once” (YOLO)v2. This  methodefficiently classifies moving or stationary objects as well as bytype. In this perspective, two values of anchor boxes (fourand eight with different sizes) are selected for comparing theloss. Also, the effects of loss weights and optimizer methods areexplored. This model is trained and tested based on the PASCALVOC2012 dataset. The comparing results show that increasingthe anchor boxes and also selecting Nadam optimizer improvesthe training performance while changing the loss weights does not have a positive effect on the accuracy. <br />
 
-This deep network is better than other alternative deep learning networks in applications such as computer vision and Natural Language Processing (NLP) asit can mitigate the error rate significantly and hence improvenetwork performances. YOLO is refreshingly simple (see Figure 1), a single convolutional network simultaneously predictsmultiple bounding  boxes and class probabilities for thoseboxes. YOLO trains on full images and directly optimizesdetection performance. This unified model has several benefitsover traditional methods of object detection. <br />
+This deep network is better than other alternative deep learning networks in applications such as computer vision and Natural Language Processing (NLP) asit can mitigate the error rate significantly and hence improvenetwork performances. YOLO is refreshingly simple (see Figure 1), a single convolutional network simultaneously predictsmultiple bounding boxes and class probabilities for thoseboxes. YOLO trains on full images and directly optimizesdetection performance. This unified model has several benefitsover traditional methods of object detection. <br />
 
 
 <p align="center">
@@ -139,25 +140,91 @@ Since the network consists only of convolutional and pooling layers, not fully c
 ## Loss Function
 The loss function of YOLOv2 is quite complex. In this version the fully connected layers is removed from YOLO(v1) and use anchor boxes to predict bounding boxes. Overall Loss is the summation of Loss calculated for bounding boxes, classes and confidence. The loss corresponding to (grid cell,anchor box)pair =(i,j) is calculated as following equations: <br /> <br />
 
-<p align="left">
-<img width="400" height="900" alt="33" src="https://user-images.githubusercontent.com/71558720/99203647-29c56980-2781-11eb-8b89-2d6115c6ad27.PNG">
+<p align="center">
+<img width="500" height="1000" alt="33" src="https://user-images.githubusercontent.com/71558720/99203647-29c56980-2781-11eb-8b89-2d6115c6ad27.PNG">
+</p> <br /><br />
+
+
+## Dataset
+In the analysis, the PASCAL VOC 2012 data set have beenused. The data set size is 2,0GB and is a well-known data setfor object detection, classification, segmentation of objects. There are around 10,000 images for training and validation containing bounding boxes with objects. It has been split into 50% for training/validation and 50% for  testing. The main goal of this challenge is to recognize objects from several visual object classes in realistic scenes. It is fundamentally asupervised learning  problem in  that a training set of labelled images is provided. The total number of objects is 40138 in 17125 images fitting in 20 classes. Object classes are definedas follows:
+<br />
+
+```diff
++ Person:   person
++ Animal:   bird, cat, cow, dog, horse, sheep
++ Vehicle:  aeroplane,  bicycle,  boat,  bus,  car,  motorbike,train
++ Indoor:   bottle,  chair,  dining  table,  potted  plant,  sofa,tv/monitor
+```
+<br />
+
+------------------------------------------------------------------------------
+# EXPERIMENTAL RESULT 
+<br /><br />
+
+<p align="center">
+<img width="500" height="330" alt="44" src="https://user-images.githubusercontent.com/71558720/99204135-b02e7b00-2782-11eb-9c00-bfe0be413091.PNG">
+</p>
+<p align="center">
+<em>TABLE III: System setup</em>
 </p> <br />
 
 
+## Result and Analysis:
+
+At first, the effect of increasing the anchor boxes is illustrated in Figure-6. It is clear that increasing the number of anchor boxes increases the accuracy by decreasing the loss function for similar epochs.
+
+<p align="center">
+<img width="700" height="350" alt="plott" src="https://user-images.githubusercontent.com/71558720/99200625-66d72f00-2774-11eb-89cb-7bbaf04a36c6.PNG">
+</p>
+<p align="center">
+<em>Fig.6: Loss function comparison for two anchor boxes sets K=4, K=8</em>
+</p> <br />
+
+
+We are also interested to see the weight of each loss components in detection accuracy. This is another scientifictest performed through changing the loss functions weight. To  do that, weights for bounding box parameters loss and confidence loss are doubled. After changing weights (TableIV), the network is trained for 50 epochs and the comparison results are shown in Figure-7. The comparison shows that increasing loss components weights does not increase the accuracy although it was expected to get better results  sinceloss function on the detection part has more sensitivity on the localization errors. 
+
+
+<p align="center">
+<img width="700" height="350" alt="lambda" src="https://user-images.githubusercontent.com/71558720/99200622-663e9880-2774-11eb-9022-cf055e5ab981.PNG">
+</p>
+<p align="center">
+<em>Fig.7: Effect of loss weights on the training accuracy on 50 epochs</em>
+</p> <br /><br />
+
+
+
+| ----       | λ coord   | λ class | λ object |λ no−object|
+| --------------------|:---:|:---:|:---:|:---:|
+| Initial lambda | 1.0 | 1.0 | 5.0 | 1.0| 
+| New lambda | 2.0 | 1.0 | 10.0 | 1.0|
+
+<em>TABLE IV: Loss weight values for both runs</em> <br /><br />
+
+
+Finally, the effects of optimizer methods on the training results are explored. In the original work, the network wastrained with Initial Adam optimizer. Table V shows the optimizer tested methods with corresponding values and Figure 8 illustrates that using Nadam provides the best performance by reducing the cost in shorter time.
+<br />
+
+
+|Optimizer | Parameters  used  |
+| --------------------|:---:|
+| Initial Adam | lr=0.5e-4, beta-1=0.9, beta-2= 0.999, epsilon=1e-07|
+| New Adam |lr=0.0001, beta-1=0.9, beta-2= 0.999, epsilon=1e-05| 
+| Nadam |lr=0.001, beta-1=0.9, beta-2= 0.999, epsilon=1e-07|
+|Adamax |lr=0.001, beta-1=0.9, beta-2= 0.999, epsilon=1e-07|
+|SGD |lr=1e-04,  decay=0.0005, momentum=0.9|
+
+<br /><br />
+
+
+<p align="center">
+<img width="700" height="350" alt="opt" src="https://user-images.githubusercontent.com/71558720/99200624-66d72f00-2774-11eb-8826-8c57ba48847e.PNG">
+</p>
+<p align="center">
+<em>Fig.8: Effects of optimizers on loss values</em>
+</p> <br /><br /><br />
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+## ** Mina R **
