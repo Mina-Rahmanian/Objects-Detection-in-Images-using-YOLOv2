@@ -49,8 +49,10 @@ Following  YOLO, the objectness prediction still predicts the IoU of the ground 
 
 
 ## Special improvements in YOLOv2:
-+ Dimension  clusters: With YOLO the box dimensions are handpicked YOLOv2 uses k-means clustering to conduct clusteringanalysis on the size of the object bounding boxes.
-+ Intersection  of  Union  (IoU): This is calculated by dividing the overlapped area of a predicted box and the truth box by the whole area made. <br /> 
+#### 1) Dimension  clusters: 
+With YOLO the box dimensions are handpicked YOLOv2 uses k-means clustering to conduct clusteringanalysis on the size of the object bounding boxes. <br />
+#### 2) Intersection  of  Union  (IoU): 
+This is calculated by dividing the overlapped area of a predicted box and the truth box by the whole area made. <br /> 
 
 For knowing how many anchor boxes should be used, asolution is to use the plot of mean IoU vs K clusters. This shows the true number of clusters captured when the increase in  the mean IoU slope is ”substantially” large (see Figure 3).
 
@@ -63,8 +65,6 @@ For knowing how many anchor boxes should be used, asolution is to use the plot o
 </p> <br /> 
 
 
-
-
 Here, we want to explore the effect of 4 amd 8 anchor boxes parameters on the final result. In this case the clusters are shown in Figure 4.
 
 <p align="center">
@@ -73,10 +73,32 @@ Here, we want to explore the effect of 4 amd 8 anchor boxes parameters on the fi
 </p> <br /> 
 <p align="center">
 <em>Fig.4: Visualization of bounding boxes clusters for K=4, K=8.</em>
-</p> <br /> 
+</p> <br /> <br /> 
 
+| Anchor box           | Width   | Height |
+| --------------------|:---:|:---:|
+| K=1  | 1.07709 | 1.78171| 
+| K=2  | 2.71054 | 5.12469 |
+| K=3  | 10.47181 | 10.09646  |
+| K=4    |5.48531| 8.11011  | 
+ 
+ <em>TABLE I: The shape of four anchor boxes</em> <br />
 
+| Anchor box           | Width   | Height |
+| --------------------|:---:|:---:|
+| K=1  |0.80658  | 1.31287| 
+| K=2  | 2.32824   | 6.54707 |
+| K=3  | 11.32239  | 11.10198 |
+| K=4    |9.05663 | 5.76735 | 
+| K=5    |6.90248 | 10.36930  | 
+| K=6   |4.40284  | 3.77522  | 
+| K=7    | 1.72716  | 3.04532| 
+| K=8    |4.21712 | 8.77177| 
 
+ <em>TABLE II: The shape of eight anchor boxes</em> <br />
+ 
+  
+#### 3) Input/Output Encoding: 
 
 
 
