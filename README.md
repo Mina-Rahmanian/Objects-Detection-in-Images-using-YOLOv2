@@ -56,6 +56,9 @@ This is calculated by dividing the overlapped area of a predicted box and the tr
 
 For knowing how many anchor boxes should be used, asolution is to use the plot of mean IoU vs K clusters. This shows the true number of clusters captured when the increase in  the mean IoU slope is ”substantially” large (see Figure 3).
 
+<p align="center">
+<img width="350" height="200" alt="11" src="https://user-images.githubusercontent.com/71558720/99202903-c4707900-277e-11eb-8521-1b3656a86f0e.PNG">
+</p> <br /> 
 
 <p align="center">
 <img width="500" height="400" alt="dd" src="https://user-images.githubusercontent.com/71558720/99200628-68085c00-2774-11eb-965b-f87aa4dcb94e.png">
@@ -68,7 +71,7 @@ For knowing how many anchor boxes should be used, asolution is to use the plot o
 Here, we want to explore the effect of 4 amd 8 anchor boxes parameters on the final result. In this case the clusters are shown in Figure 4.
 
 <p align="center">
-  <img width="350" height="250" hspace="20" alt="k4" src="https://user-images.githubusercontent.com/71558720/99200620-650d6b80-2774-11eb-8a62-df51e991704d.png"> <em>K=4</em>
+  <img width="350" height="290" hspace="20" alt="k4" src="https://user-images.githubusercontent.com/71558720/99200620-650d6b80-2774-11eb-8a62-df51e991704d.png"> <em>K=4</em>
   <img width="350" height="290" hspace="20" alt="k8" src="https://user-images.githubusercontent.com/71558720/99200621-65a60200-2774-11eb-9c74-f18dbdc95e26.png"> <em>K=8</em>
 </p> <br /> 
 <p align="center">
@@ -82,7 +85,7 @@ Here, we want to explore the effect of 4 amd 8 anchor boxes parameters on the fi
 | K=3  | 10.47181 | 10.09646  |
 | K=4    |5.48531| 8.11011  | 
  
- <em>TABLE I: The shape of four anchor boxes</em> <br />
+ <em>TABLE I: The shape of four anchor boxes</em> <br /><br />
 
 | Anchor box           | Width   | Height |
 | --------------------|:---:|:---:|
@@ -99,15 +102,22 @@ Here, we want to explore the effect of 4 amd 8 anchor boxes parameters on the fi
  
   
 #### 3) Input/Output Encoding: 
+Data set contains many imageswith different sizes. Input/output encoding is necessary to reshape any image to the pre-specifed shape. The input encodingessentially only requires to readin and resize the image to thepre-specified shape. The output’s xmin, ymin, xmax and ymax also need to be resized and assign each object to a groundtruth anchor box. Also, the bounding boxes encoding for out-put is done by defining (centerx,centery,centerw,centerh) formats as shown in Figure 5. <br />
+
+Centerx=1/2(xmin+xmax)
+Centery=1/2(ymin+ymax)
+Centerw=  (xmax−xmin)
+Centerh=  (ymax−ymin) <br />
 
 
+<p align="center">
+<img width="350" height="300" alt="encode" src="https://user-images.githubusercontent.com/71558720/99200630-69398900-2774-11eb-9571-0a90744a4858.png">
+</p>
+<p align="center">
+<em>Fig.5: Bounding box encoding.</em>
+</p> <br /> 
 
-
-
-
-
-
-
+#### 4)  Direct   Location   Prediction:
 
 
 
